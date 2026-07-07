@@ -53,7 +53,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("foto.jpg", use_container_width=True)
+st.image("foto.png", use_container_width=True)
 
 st.title("Acceso protegido")
 
