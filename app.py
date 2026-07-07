@@ -5,7 +5,7 @@ from pathlib import Path
 # CONFIGURACIÓN
 # =====================================
 
-PASSWORD = "MiContraseña123"
+PASSWORD = st.secrets["PASSWORD"]
 
 st.set_page_config(
     page_title="Acceso protegido",
@@ -50,6 +50,12 @@ h1,h2,p{
     border-radius:12px;
 }
 
+.lock{
+    text-align:center;
+    font-size:60px;
+    margin-bottom:20px;
+}
+
 img{
     border-radius:18px;
 }
@@ -63,10 +69,11 @@ img{
 
 st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-st.markdown(
-    "<h1 style='font-size:60px;'>🔒</h1>",
-    unsafe_allow_html=True
-)
+st.markdown("""
+<div class="lock">
+    🔒
+</div>
+""", unsafe_allow_html=True)
 
 if Path("foto.png").exists():
     st.image("foto.png", use_container_width=True)
@@ -76,7 +83,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write("Introduce la contraseña para desbloquear la descarga.")
+st.write("Para desbloquear tu regalo, tendrás que resolver la integral... Solo se aceptan dígitos y comas. La contraseña tiene 5 dígitos (sin contar con la coma decimal, si que hay).")
 
 password = st.text_input(
     "Contraseña",
@@ -102,7 +109,7 @@ if st.button("Desbloquear", use_container_width=True):
                 )
 
         else:
-            st.error("No se encontró archivo.zip")
+            st.error("No se encontró su regalo... Contacte con el creador.")
 
     else:
         st.error("❌ Contraseña incorrecta")
