@@ -83,7 +83,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write("Para desbloquear tu regalo, tendrá que resolver la integral... Solo se aceptan dígitos y comas. La contraseña tiene 6 dígitos (sin contar con la coma decimal, si es que hay), así que deberá redondear correctamente el resultado.")
+st.write("Para desbloquear tu regalo, tendrá que resolver la integral... Solo se aceptan dígitos, comas y el signo negativo (-). La contraseña tiene 6 dígitos (sin contar con la coma decimal, si es que hay), así que deberá redondear correctamente el resultado.")
 
 password = st.text_input(
     "Contraseña",
