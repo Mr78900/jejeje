@@ -83,7 +83,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write("Para desbloquear tu regalo, tendrás que resolver la integral... Solo se aceptan dígitos y comas. La contraseña tiene 5 dígitos (sin contar con la coma decimal, si que hay).")
+st.write("Para desbloquear tu regalo, tendrá que resolver la integral... Solo se aceptan dígitos y comas. La contraseña tiene 5 dígitos (sin contar con la coma decimal, si es que hay), así que deberá redondear correctamente el resultado.")
 
 password = st.text_input(
     "Contraseña",
@@ -94,7 +94,7 @@ if st.button("Desbloquear", use_container_width=True):
 
     if password == PASSWORD:
 
-        st.success("✅ Acceso concedido")
+        st.success("✅ Acceso concedido, ¡felicidades!")
 
         if Path("archivo.zip").exists():
 
