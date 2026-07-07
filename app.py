@@ -75,8 +75,8 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-if Path("foto.png").exists():
-    st.image("foto.png", use_container_width=True)
+if Path("integral.png").exists():
+    st.image("integral.png", use_container_width=True)
 
 st.markdown(
     "<h2 style='text-align:center;'>Acceso protegido</h2>",
