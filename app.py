@@ -4,7 +4,7 @@ import streamlit as st
 # CONFIGURACIÓN
 # ===============================
 
-PASSWORD = "MiContraseña123"
+PASSWORD = st.secrets["PASSWORD"]
 
 st.set_page_config(
     page_title="Acceso protegido",
