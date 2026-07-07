@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 
 # ===============================
 # CONFIGURACIÓN
@@ -20,7 +21,7 @@ st.markdown("""
 <style>
 
 .stApp{
-    background: linear-gradient(135deg,#f2f2f7,#dfe5ec);
+    background:#000000;
 }
 
 .main > div{
@@ -28,22 +29,53 @@ st.markdown("""
 }
 
 .card{
-    background:white;
+    background:#181818;
     padding:40px;
-    border-radius:22px;
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    border-radius:24px;
+    box-shadow:0 0 35px rgba(255,255,255,.05);
     text-align:center;
 }
 
-h1{
-    text-align:center;
+h1,h2,h3,p,label{
+    color:white !important;
+}
+
+.stTextInput label{
+    color:white !important;
+}
+
+.stTextInput input{
+    background:#2a2a2a;
+    color:white;
+    border:1px solid #444;
+    border-radius:12px;
+}
+
+.stButton>button{
+    width:100%;
+    background:white;
+    color:black;
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    font-size:17px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.stButton>button:hover{
+    background:#d9d9d9;
+}
+
+img{
+    border-radius:18px;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 # ===============================
-# INTERFAZ
+# TARJETA
 # ===============================
 
 st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -53,9 +85,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("foto.png", use_container_width=True)
+# Mostrar la imagen solo si existe
+image_path = Path("foto.jpg")
 
-st.title("Acceso protegido")
+if image_path.exists():
+    st.image(str(image_path), use_container_width=True)
+
+st.markdown(
+    "<h2 style='text-align:center;'>Acceso protegido</h2>",
+    unsafe_allow_html=True
+)
 
 st.write("Introduce la contraseña para desbloquear la descarga.")
 
@@ -70,14 +109,22 @@ if st.button("Desbloquear"):
 
         st.success("Acceso concedido ✅")
 
-        with open("archivo.zip","rb") as file:
+        zip_path = Path("archivo.zip")
 
-            st.download_button(
-                "📦 Descargar ZIP",
-                data=file,
-                file_name="archivo.zip",
-                mime="application/zip"
-            )
+        if zip_path.exists():
+
+            with open(zip_path, "rb") as file:
+
+                st.download_button(
+                    label="📦 Descargar ZIP",
+                    data=file,
+                    file_name="archivo.zip",
+                    mime="application/zip"
+                )
+
+        else:
+
+            st.error("No se encontró el archivo ZIP.")
 
     else:
 
