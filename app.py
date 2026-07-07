@@ -96,14 +96,14 @@ if st.button("Desbloquear", use_container_width=True):
 
         st.success("✅ Acceso concedido, ¡felicidades!")
 
-        if Path("sorpresita.zip").exists():
+        if Path("sopresita.zip").exists():
 
-            with open("sorpresita.zip", "rb") as f:
+            with open("sopresita.zip", "rb") as f:
 
                 st.download_button(
                     label="📦 Descargar archivo sin virus :)",
                     data=f,
-                    file_name="sorpresita.zip",
+                    file_name="sopresita.zip",
                     mime="application/zip",
                     use_container_width=True
                 )
